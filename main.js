@@ -1,6 +1,7 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const SVG_NS = 'http://www.w3.org/2000/svg';
+  const params = new URLSearchParams(location.search);
 
   /* ---------- Header + menu ---------- */
   const hdr = document.querySelector('.hdr');
@@ -239,6 +240,7 @@
       setPower(true); restart();
     };
     restart();
+    if (params.get('scene')) setScene(params.get('scene'));
   }
 
   /* ---------- Hero slideshow (our photos; phones also get our vertical videos) ---------- */
@@ -340,6 +342,7 @@
   /* ---------- Clickable cards → designer scenes ---------- */
   const designerSection = document.getElementById('designer');
   const showScene = (el) => {
+    if (!designerSection) { location.href = `app.html?scene=${el.dataset.scene}#designer`; return; }
     setScene(el.dataset.scene, el.dataset.mode);
     designerSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
   };
@@ -390,9 +393,10 @@
     modal.querySelector('.modal-x').addEventListener('click', close);
     modal.addEventListener('click', (e) => { if (e.target === modal) close(); });   // click on backdrop
     modal.addEventListener('close', () => mMedia.replaceChildren());               // stop the video
-    mQuote.addEventListener('click', () => {
-      if (pick) document.getElementById('estimate-form').elements.interest.value = pick;
-      close();
+    mQuote.addEventListener('click', (e) => {
+      const here = document.getElementById('estimate-form');
+      if (here) { e.preventDefault(); if (pick) here.elements.interest.value = pick; close(); here.scrollIntoView({ behavior: 'smooth' }); return; }
+      mQuote.href = pick ? `contact.html?interest=${encodeURIComponent(pick)}` : 'contact.html';
     });
   }
 
@@ -436,7 +440,8 @@
     };
     tick();
     setInterval(tick, 1000);
-    cd.addEventListener('click', () => setScene(next.scene));
+    if (stage) { cd.href = '#designer'; cd.addEventListener('click', () => setScene(next.scene)); }
+    else cd.href = `app.html?scene=${next.scene}#designer`;
   }
 
   /* ---------- Reviews ---------- */
@@ -474,10 +479,22 @@
   // The very first request sends a one-time "confirm your email" message to that inbox: click it once.
   const FORM_EMAIL = 'macpaulmesseh@gmail.com';
 
+  const MAX_PHOTO_MB = 10;
   const form = document.getElementById('estimate-form');
+
+  // links that pre-pick a service: fill the form here, or pass it to the contact page
+  document.querySelectorAll('[data-pick]').forEach((link) => {
+    if (form) link.addEventListener('click', () => { form.elements.interest.value = link.dataset.pick; });
+    else if (!link.matches('.tile[data-modal]')) link.href = `contact.html?interest=${encodeURIComponent(link.dataset.pick)}`;
+  });
+
+  if (form) {
   const note = document.getElementById('form-note');
   const photoInput = document.getElementById('photo-input');
-  const MAX_PHOTO_MB = 10;
+  if (params.get('interest')) {
+    const opt = [...form.elements.interest.options].find((o) => o.value === params.get('interest'));
+    if (opt) form.elements.interest.value = opt.value;
+  }
 
   if (FORM_EMAIL) {
     form.action = `https://formsubmit.co/${FORM_EMAIL}`;
@@ -489,7 +506,7 @@
     });
     document.getElementById('send-btn').textContent = 'Send my request';
   }
-  if (new URLSearchParams(location.search).get('sent')) {
+  if (params.get('sent')) {
     note.textContent = 'Thanks! Your request was sent. We\'ll be in touch soon.';
   }
 
@@ -510,10 +527,6 @@
     hint.textContent = 'Tap to change photo';
     thumb.src = URL.createObjectURL(f); thumb.hidden = false;
   });
-
-  document.querySelectorAll('[data-pick]').forEach((link) => link.addEventListener('click', () => {
-    form.elements.interest.value = link.dataset.pick;
-  }));
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -558,6 +571,7 @@
     }
   });
   form.addEventListener('input', (e) => { const f = e.target.closest('.fld'); if (f) f.classList.remove('invalid'); });
+  }
 
   /* ---------- Leave a review ---------- */
   const rForm = document.getElementById('review-form');
@@ -573,7 +587,7 @@
         const i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; rForm.appendChild(i);
       });
     }
-    if (new URLSearchParams(location.search).get('reviewed')) {
+    if (params.get('reviewed')) {
       rNote.textContent = 'Thank you! We got your review and really appreciate it.';
     }
     rPhoto.addEventListener('change', () => {

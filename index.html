@@ -17,11 +17,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&family=Montserrat:wght@800;900&family=Mr+Dafoe&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="home">
 
 <!-- ================= Header ================= -->
 <header class="hdr" id="top">
-  <a href="#top" class="brand" aria-label="Mac's Premier Holiday Lighting home">
+  <a href="index.html" class="brand" aria-label="Mac's Premier Holiday Lighting home">
     <svg class="brand-roof" viewBox="0 0 120 52" aria-hidden="true">
       <path d="M4 48 L60 6 L116 48" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
       <g class="roof-dots"></g>
@@ -30,12 +30,12 @@
     <span class="brand-text"><span class="brand-name">MAC'S</span><span class="brand-tag">Premier Holiday Lighting</span></span>
   </a>
   <nav class="hdr-nav" aria-label="Main">
-    <a href="#work">Our Work</a>
-    <a href="#services">Services</a>
-    <a href="#app">The App</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#faq">FAQ</a>
-    <a href="#quote">Contact</a>
+    <a href="work.html">Our Work</a>
+    <a href="services.html">Services</a>
+    <a href="app.html">The App</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
   </nav>
   <div class="hdr-actions">
     <a class="hdr-phone" href="tel:+16122297148"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>612-229-7148</a>
@@ -45,35 +45,25 @@
     <a class="icon-btn" href="tel:+16122297148" aria-label="Call 612-229-7148">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
     </a>
-    <a class="pill-btn" href="#quote">Free Quote</a>
+    <a class="pill-btn" href="contact.html">Free Quote</a>
     <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </div>
 </header>
 
-<!-- Full-screen menu -->
 <nav class="menu" id="menu" aria-label="Main" hidden>
-  <div class="menu-inner">
-    <div class="menu-col">
-      <p class="menu-h">Services</p>
-      <a href="#services">Permanent Lighting</a>
-      <a href="#services">Holiday Displays</a>
-      <a href="#services">Commercial &amp; HOA</a>
-    </div>
-    <div class="menu-col">
-      <p class="menu-h">Explore</p>
-      <a href="#compare">Everyday vs Holiday</a>
-      <a href="#app">App Features</a>
-      <a href="#designer">Try the Designer</a>
-    </div>
-    <div class="menu-col">
-      <p class="menu-h">Help</p>
-      <a href="#reviews">Reviews</a>
-    <a href="#faq">FAQ</a>
-      <a href="#quote" data-pick="Service / repair">Service Request</a>
-      <a href="tel:+16122297148">612-229-7148</a>
-    </div>
+  <div class="menu-list">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="work.html">Our Work</a>
+    <a href="services.html">Services</a>
+    <a href="app.html">The App</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
   </div>
-  <a href="#quote" class="pill-btn white big menu-cta">Book a free design visit</a>
+  <div class="menu-foot">
+    <a href="tel:+16122297148" class="menu-phone">Call 612-229-7148</a>
+    <a href="contact.html" class="pill-btn btn-primary big menu-cta">Get a Free Quote</a>
+  </div>
 </nav>
 
 <main>
@@ -105,7 +95,7 @@
       <p class="hero-script">Light Up Your Home</p>
       <h1>Mac's Premier Holiday Lighting</h1>
       <div class="hero-ctas">
-        <a href="#quote" class="pill-btn btn-primary">Get a Free Quote</a>
+        <a href="contact.html" class="pill-btn btn-primary">Get a Free Quote</a>
         <a href="tel:+16122297148" class="pill-btn btn-light">Call 612-229-7148</a>
       </div>
     </div>
@@ -113,62 +103,38 @@
   <div class="hero-dots" role="group" aria-label="Choose slide"></div>
 </section>
 
-<!-- ================= Our work (real Mac's installs) ================= -->
+<!-- ================= Our work preview (full grid on work.html) ================= -->
 <section class="section" id="work">
   <div class="wrap">
     <p class="eyebrow accent">Real projects</p>
     <div class="row-head reveal">
       <h2>Our work</h2>
-      <p class="work-note">Real homes, lit by our crew. Tap any one to see it bigger.</p>
+      <a class="pill-btn btn-outline" href="work.html">See all our work &rarr;</a>
     </div>
   </div>
   <div class="work-grid">
-    <a class="tile" href="#quote" data-modal data-tall data-title="Clean lines, every peak" data-text="Bright, even white light on every peak and eave. Classy all year." data-pick="Permanent roofline lighting">
+    <a class="tile" href="contact.html" data-modal data-tall data-title="Clean lines, every peak" data-text="Bright, even white light on every peak and eave. Classy all year." data-pick="Permanent roofline lighting">
       <img src="assets/work/white-farmhouse.jpg" alt="Dark farmhouse outlined in warm white lights" loading="lazy">
       <span class="tile-k">Warm white</span>
       <span class="tile-h">Clean lines, every peak</span>
       <span class="tile-more" aria-hidden="true">+</span>
     </a>
-    <a class="tile" href="#quote" data-modal data-tall data-title="Red &amp; green rooflines" data-text="Permanent lights set to red and green. Same lights, any color, any night." data-pick="Permanent roofline lighting">
+    <a class="tile" href="contact.html" data-modal data-tall data-title="Red &amp; green rooflines" data-text="Permanent lights set to red and green. Same lights, any color, any night." data-pick="Permanent roofline lighting">
       <video class="tile-video" data-src="assets/work/install-3.mp4" poster="assets/work/install-3.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <span class="tile-k">Video</span>
       <span class="tile-h">Red &amp; green rooflines</span>
       <span class="tile-more" aria-hidden="true">+</span>
     </a>
-    <a class="tile" href="#quote" data-modal data-tall data-title="Any color, one tap" data-text="Change the whole roofline from your phone: rainbow, team colors or holidays." data-pick="Permanent roofline lighting">
+    <a class="tile" href="contact.html" data-modal data-tall data-title="Any color, one tap" data-text="Change the whole roofline from your phone: rainbow, team colors or holidays." data-pick="Permanent roofline lighting">
       <video class="tile-video" data-src="assets/work/install-5.mp4" poster="assets/work/install-5.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <span class="tile-k">Video</span>
       <span class="tile-h">Any color, one tap</span>
       <span class="tile-more" aria-hidden="true">+</span>
     </a>
-    <a class="tile" href="#quote" data-modal data-tall data-title="Holiday ready" data-text="Red and green for December, back to warm white in January. No ladders." data-pick="Permanent roofline lighting">
+    <a class="tile" href="contact.html" data-modal data-tall data-title="Holiday ready" data-text="Red and green for December, back to warm white in January. No ladders." data-pick="Permanent roofline lighting">
       <img src="assets/work/red-green-house.jpg" alt="Two-story house in red and green lights at dusk" loading="lazy">
       <span class="tile-k">Holidays</span>
       <span class="tile-h">Holiday ready</span>
-      <span class="tile-more" aria-hidden="true">+</span>
-    </a>
-    <a class="tile" href="#quote" data-modal data-tall data-title="Every peak, every eave" data-text="Lights follow the whole roofline, gables and garage included." data-pick="Permanent roofline lighting">
-      <video class="tile-video" data-src="assets/work/install-2.mp4" poster="assets/work/install-2.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="tile-k">Video</span>
-      <span class="tile-h">Every peak, every eave</span>
-      <span class="tile-more" aria-hidden="true">+</span>
-    </a>
-    <a class="tile" href="#quote" data-modal data-tall data-title="Color for every occasion" data-text="Purple, pink, white or any mix you like, right from your phone." data-pick="Permanent roofline lighting">
-      <img src="assets/work/purple-two-story.jpg" alt="Two-story house lit in purple and white" loading="lazy">
-      <span class="tile-k">Color</span>
-      <span class="tile-h">Color for every occasion</span>
-      <span class="tile-more" aria-hidden="true">+</span>
-    </a>
-    <a class="tile" href="#quote" data-modal data-tall data-title="Colors that shift" data-text="Set the lights to slowly change colors through the evening." data-pick="Permanent roofline lighting">
-      <video class="tile-video" data-src="assets/work/install-1.mp4" poster="assets/work/install-1.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="tile-k">Video</span>
-      <span class="tile-h">Colors that shift</span>
-      <span class="tile-more" aria-hidden="true">+</span>
-    </a>
-    <a class="tile" href="#quote" data-modal data-tall data-title="Glowing through the snow" data-text="Built for winter: the lights stay on and bright through snow and cold." data-pick="Permanent roofline lighting">
-      <img src="assets/work/snow-day.jpg" alt="House with red and blue roofline lights on a snowy day" loading="lazy">
-      <span class="tile-k">Winter</span>
-      <span class="tile-h">Glowing through the snow</span>
       <span class="tile-more" aria-hidden="true">+</span>
     </a>
   </div>
@@ -201,22 +167,22 @@
     </div>
   </div>
   <div class="work-grid svc-grid" id="svc">
-    <a class="tile" href="#quote" data-modal data-title="Permanent Lights" data-text="Color-changing lights that stay up all year and run from your phone." data-pick="Permanent roofline lighting">
+    <a class="tile" href="contact.html" data-modal data-title="Permanent Lights" data-text="Color-changing lights that stay up all year and run from your phone." data-pick="Permanent roofline lighting">
       <video class="tile-video" data-src="https://videos.pexels.com/video-files/39024336/16605545_1280_720_30fps.mp4" poster="https://images.pexels.com/videos/39024336/cinematic-contemporary-architecture-driveway-exterior-39024336.jpeg?auto=compress&cs=tinysrgb&h=900&fit=crop&w=700" muted loop playsinline preload="none" aria-hidden="true"></video>
       <span class="tile-h">Permanent Lights</span>
       <span class="tile-more" aria-hidden="true">+</span>
     </a>
-    <a class="tile" href="#quote" data-modal data-title="Holiday Displays" data-text="We design, hang, maintain, take down and store it for you." data-pick="Holiday display (seasonal)">
+    <a class="tile" href="contact.html" data-modal data-title="Holiday Displays" data-text="We design, hang, maintain, take down and store it for you." data-pick="Holiday display (seasonal)">
       <video class="tile-video" data-src="assets/video/xmas-blue-roofline.mp4" poster="assets/video/xmas-blue-roofline.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <span class="tile-h">Holiday Displays</span>
       <span class="tile-more" aria-hidden="true">+</span>
     </a>
-    <a class="tile" href="#quote" data-modal data-title="Full-Yard Displays" data-text="Trees, bushes, walkways and windows, lit end to end." data-pick="Holiday display (seasonal)">
+    <a class="tile" href="contact.html" data-modal data-title="Full-Yard Displays" data-text="Trees, bushes, walkways and windows, lit end to end." data-pick="Holiday display (seasonal)">
       <video class="tile-video" data-src="assets/video/xmas-vibrant-house.mp4" poster="assets/video/xmas-vibrant-house.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <span class="tile-h">Full-Yard Displays</span>
       <span class="tile-more" aria-hidden="true">+</span>
     </a>
-    <a class="tile" href="#quote" data-modal data-title="Commercial &amp; HOA" data-text="Storefronts, offices and community spaces in your colors." data-pick="Commercial / HOA">
+    <a class="tile" href="contact.html" data-modal data-title="Commercial &amp; HOA" data-text="Storefronts, offices and community spaces in your colors." data-pick="Commercial / HOA">
       <img src="assets/stock/commercial-red-accent.jpg" alt="Commercial building with red accent lighting" loading="lazy">
       <span class="tile-h">Commercial &amp; HOA</span>
       <span class="tile-more" aria-hidden="true">+</span>
@@ -232,87 +198,16 @@
       <div class="trust-copy">
         <p class="eyebrow">Why Mac's</p>
         <h2>One local crew, start to finish.</h2>
-        <a href="#quote" class="pill-btn white">Book a free design visit</a>
+        <a href="contact.html" class="pill-btn white">Book a free design visit</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ================= App features carousel ================= -->
-<section class="section" id="app">
-  <div class="wrap">
-    <div class="row-head reveal">
-      <div>
-        <h2>Run it from your phone</h2>
-      </div>
-      <div class="arrows">
-        <button class="arrow" data-scroll="feat" data-dir="-1" aria-label="Previous">‹</button>
-        <button class="arrow" data-scroll="feat" data-dir="1" aria-label="Next">›</button>
-      </div>
-    </div>
-  </div>
-  <div class="rail" id="feat">
-    <button class="fcard" type="button" style="--tint:#1e9bff" data-scene="signature" data-mode="steady" aria-label="Try Every bulb in the designer">
-      <h3>Every bulb</h3>
-      <span class="fcard-try">Try it &rarr;</span>
-      <div class="phone-sm" aria-hidden="true">
-        <div class="ps-top"><span>Accent</span><b>Save</b></div>
-        <div class="ps-grid">
-          <i class="w"></i><i></i><i></i><i class="w"></i><i></i><i></i><i class="w"></i><i></i><i></i><i class="w"></i>
-          <i></i><i class="w"></i><i></i><i></i><i class="w"></i><i></i><i></i><i class="w"></i><i></i><i></i>
-        </div>
-      </div>
-    </button>
-    <button class="fcard" type="button" style="--tint:#8a4dff" data-scene="gameday" data-mode="chase" aria-label="Try Zones in the designer">
-      <h3>Zones</h3>
-      <span class="fcard-try">Try it &rarr;</span>
-      <div class="phone-sm" aria-hidden="true">
-        <div class="ps-top"><span>Sections</span><b>+</b></div>
-        <div class="ps-row on"><span>Whole house</span><i></i></div>
-        <div class="ps-row"><span>Front</span><i></i></div>
-        <div class="ps-row"><span>Garage</span><i></i></div>
-        <div class="ps-row"><span>Back patio</span><i></i></div>
-      </div>
-    </button>
-    <button class="fcard" type="button" style="--tint:#ff2fb3" data-scene="warm" data-mode="steady" aria-label="Try Timers in the designer">
-      <h3>Timers</h3>
-      <span class="fcard-try">Try it &rarr;</span>
-      <div class="phone-sm" aria-hidden="true">
-        <div class="ps-top"><span>Timers</span><b>+</b></div>
-        <div class="ps-row on"><span>Dusk · Warm white</span><i></i></div>
-        <div class="ps-row on"><span>Fri · Game day</span><i></i></div>
-        <div class="ps-row"><span>Dec 1 · Christmas</span><i></i></div>
-        <div class="ps-row on"><span>11:30pm · Off</span><i></i></div>
-      </div>
-    </button>
-    <button class="fcard" type="button" style="--tint:#20d36b" data-scene="valentine" data-mode="twinkle" aria-label="Try Custom looks in the designer">
-      <h3>Custom looks</h3>
-      <span class="fcard-try">Try it &rarr;</span>
-      <div class="phone-sm" aria-hidden="true">
-        <div class="ps-top"><span>New look</span><b>Save</b></div>
-        <div class="ps-swatches"><i style="--s:#ff2a3d"></i><i style="--s:#20d36b"></i><i style="--s:#fff"></i><i style="--s:#ffc627"></i><i style="--s:#1e9bff"></i><i style="--s:#ff2fb3"></i></div>
-        <div class="ps-row"><span>Effect</span><em>Chase</em></div>
-        <div class="ps-row"><span>Speed</span><em>Medium</em></div>
-      </div>
-    </button>
-    <button class="fcard" type="button" style="--tint:#ffc627" data-scene="christmas" data-mode="chase" aria-label="Try Holiday scenes in the designer">
-      <h3>Holiday scenes</h3>
-      <span class="fcard-try">Try it &rarr;</span>
-      <div class="phone-sm" aria-hidden="true">
-        <div class="ps-top"><span>Scenes</span><b>⌕</b></div>
-        <div class="ps-row"><span>🎄 Christmas</span><i></i></div>
-        <div class="ps-row"><span>🎃 Halloween</span><i></i></div>
-        <div class="ps-row"><span>🏈 Game day</span><i></i></div>
-        <div class="ps-row"><span>🇺🇸 July 4th</span><i></i></div>
-      </div>
-    </button>
   </div>
 </section>
 
 <!-- ================= Big feature banner ================= -->
 <section class="section tight">
   <div class="wrap">
-    <a class="banner reveal" href="#quote">
+    <a class="banner reveal" href="contact.html">
       <video class="banner-video" data-src="assets/video/winter-street-house.mp4" poster="assets/video/winter-street-house.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <span class="banner-copy">
         <span class="banner-h">No more ladders in the snow</span>
@@ -322,204 +217,13 @@
   </div>
 </section>
 
-<!-- ================= The light ================= -->
-<section class="section" id="light">
-  <div class="wrap">
-    <div class="spec reveal">
-      <h2 class="h-center">What goes on your roof</h2>
-      <div class="spec-grid">
-        <div class="spec-visual" aria-hidden="true">
-          <div class="track">
-            <i style="--c:#1e9bff"></i><i style="--c:#4f7bff"></i><i style="--c:#8a4dff"></i><i style="--c:#b544e6"></i><i style="--c:#ff2fb3"></i><i style="--c:#ff5aa0"></i>
-          </div>
-        </div>
-        <ul class="spec-list">
-          <li>Millions of colors &amp; whites</li>
-          <li>Each bulb its own color</li>
-          <li>Dimmable, energy-efficient</li>
-          <li>Works with Alexa &amp; Google</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Interactive designer ================= -->
-<section class="section" id="designer">
-  <div class="wrap">
-    <h2 class="h-center reveal">Tap a scene. <span class="grad">Watch it glow.</span></h2>
-    <div class="designer reveal">
-      <div class="phone" aria-label="Lighting app controls">
-        <div class="phone-notch" aria-hidden="true"></div>
-        <div class="app-head">
-          <div><small>Mac's Lights</small><strong id="theme-name">Signature</strong></div>
-          <button class="power on" id="power" aria-pressed="true" aria-label="Lights on/off">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v8M7.1 6.3a7 7 0 1 0 9.8 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-          </button>
-        </div>
-        <p class="app-label">Scenes</p>
-        <div class="themes" role="radiogroup" aria-label="Lighting theme">
-          <button class="theme active" role="radio" aria-checked="true" data-theme="signature"><i style="--c1:#1e9bff;--c2:#ff2fb3"></i>Signature</button>
-          <button class="theme" role="radio" aria-checked="false" data-theme="christmas"><i style="--c1:#ff2a3d;--c2:#20d36b"></i>Christmas</button>
-          <button class="theme" role="radio" aria-checked="false" data-theme="halloween"><i style="--c1:#ff7a00;--c2:#9b3dff"></i>Halloween</button>
-          <button class="theme" role="radio" aria-checked="false" data-theme="july4"><i style="--c1:#ff2a3d;--c2:#2b6bff"></i>July 4th</button>
-          <button class="theme" role="radio" aria-checked="false" data-theme="gameday"><i style="--c1:#7a2cff;--c2:#ffc627"></i>Game Day</button>
-          <button class="theme" role="radio" aria-checked="false" data-theme="valentine"><i style="--c1:#ff2f7d;--c2:#ffd1e3"></i>Valentine</button>
-          <button class="theme" role="radio" aria-checked="false" data-theme="security"><i style="--c1:#ffffff;--c2:#dfe8ff"></i>Security</button>
-          <button class="theme" role="radio" aria-checked="false" data-theme="warm"><i style="--c1:#ffc98a;--c2:#ffe7c4"></i>Warm</button>
-        </div>
-        <p class="app-label">Effect</p>
-        <div class="modes" role="radiogroup" aria-label="Animation">
-          <button class="mode active" role="radio" aria-checked="true" data-mode="chase">Chase</button>
-          <button class="mode" role="radio" aria-checked="false" data-mode="twinkle">Twinkle</button>
-          <button class="mode" role="radio" aria-checked="false" data-mode="steady">Steady</button>
-        </div>
-        <label class="app-label" for="brightness">Brightness <span id="bright-val">100%</span></label>
-        <input type="range" id="brightness" min="20" max="100" value="100">
-      </div>
-      <div class="designer-stage" id="designer-stage" data-house="live" aria-label="Animated preview of a house roofline in the selected scene">
-        <p class="stage-caption"><span id="mode-name">Chase</span> effect</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Warm vs security ================= -->
-<section class="section" id="residential">
-  <div class="wrap">
-    <h2 class="h-center reveal">Cozy on Friday. <span class="grad">Safe every night.</span></h2>
-    <div class="duo">
-      <figure class="duo-card reveal" role="button" tabindex="0" data-scene="warm" data-mode="steady" aria-label="Preview warm white in the designer">
-        <img src="assets/stock/dusk-bungalow.jpg" alt="Home glowing in warm white light at dusk" loading="lazy">
-        <figcaption><b>Warm white</b><span class="duo-try">Preview &rarr;</span></figcaption>
-      </figure>
-      <figure class="duo-card reveal" role="button" tabindex="0" data-scene="security" data-mode="steady" aria-label="Preview bright white in the designer">
-        <img src="assets/stock/snowy-brick-house.jpg" alt="Home with bright exterior lighting on a snowy evening" loading="lazy">
-        <figcaption><b>Bright white</b><span class="duo-try">Preview &rarr;</span></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Steps + form ================= -->
-<section class="section" id="quote">
-  <div class="wrap quote-grid">
-    <div class="reveal">
-      <h2 class="h-left">Get <span class="grad">glowing</span></h2>
-      <ol class="next-steps">
-        <li><button type="button" class="step-btn" data-focus="first"><span>1</span>Reach out</button></li>
-        <li><button type="button" class="step-btn" data-focus="city"><span>2</span>Free visit &amp; quote</button></li>
-        <li><button type="button" class="step-btn" data-focus="interest"><span>3</span>Pick your install day</button></li>
-      </ol>
-      <div class="bar" aria-hidden="true"></div>
-      <div class="contact-btns">
-        <a class="cbtn" href="tel:+16122297148"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span><small>Call</small>612-229-7148</span></a>
-        <a class="cbtn" href="sms:+16122297148?&amp;body=Hi%20Mac%27s!%20I%27d%20like%20a%20free%20lighting%20quote."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z"/></svg><span><small>Text</small>612-229-7148</span></a>
-        <a class="cbtn" href="mailto:macpaulmesseh@gmail.com?subject=Free%20lighting%20quote&amp;body=Hi%20Mac%27s%2C%0A%0AI%27d%20like%20a%20free%20quote%20for%20my%20home.%0A%0AName%3A%0AAddress%2FCity%3A%0APhone%3A%0A"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 6 9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span><small>Email</small>macpaulmesseh@gmail.com</span></a>
-      </div>
-    </div>
-
-    <form class="qform reveal" id="estimate-form" novalidate>
-      <p class="qform-h">Request a free quote</p>
-      <div class="row">
-        <label class="fld"><span>First name</span><input name="first" type="text" autocomplete="given-name" required></label>
-        <label class="fld"><span>Last name</span><input name="last" type="text" autocomplete="family-name"></label>
-      </div>
-      <div class="row">
-        <label class="fld"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
-        <label class="fld"><span>Email</span><input name="email" type="email" autocomplete="email"></label>
-      </div>
-      <label class="fld"><span>Home address</span><input name="address" type="text" autocomplete="street-address" placeholder="Street address"></label>
-      <div class="row">
-        <label class="fld"><span>City</span><input name="city" type="text" autocomplete="address-level2"></label>
-        <label class="fld"><span>ZIP</span><input name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10"></label>
-      </div>
-      <label class="fld"><span>Interested in</span>
-        <select name="interest">
-          <option>Permanent roofline lighting</option>
-          <option>Holiday display (seasonal)</option>
-          <option>Commercial / HOA</option>
-          <option>Service / repair</option>
-          <option>Not sure yet</option>
-        </select>
-      </label>
-      <label class="file-fld" id="photo-drop">
-        <input name="attachment" type="file" accept="image/*" id="photo-input">
-        <span class="file-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h3l2-2h6l2 2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm8 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></span>
-        <span class="file-text"><b id="photo-name">Add a photo of your home</b><small id="photo-hint">Optional &middot; helps us price your design</small></span>
-        <img class="file-thumb" id="photo-thumb" alt="" hidden>
-      </label>
-      <label class="fld"><span>Anything else?</span><textarea name="message" rows="2" placeholder="Optional"></textarea></label>
-      <div class="send-row">
-        <button type="submit" class="pill-btn grad-btn" data-via="email" id="send-btn">Email my request</button>
-        <button type="submit" class="pill-btn dark-btn" data-via="sms">Text my request</button>
-      </div>
-      <p class="form-note" id="form-note" role="status"></p>
-    </form>
-  </div>
-</section>
-
-<!-- ================= Reviews: real customer reviews + leave a review ================= -->
-<section class="section" id="reviews">
-  <div class="wrap">
-    <p class="eyebrow accent">Reviews</p>
-    <div class="row-head reveal">
-      <h2>What our customers say</h2>
-    </div>
-    <div class="rv-layout">
-      <div class="rv-list" id="review-list">
-        <div class="rv-empty" id="review-empty">
-          <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="rv-empty-h">Be one of our first reviews</p>
-          <p>Had your home lit by Mac's? We'd love to hear how it went. Your review helps your neighbors find a crew they can trust.</p>
-        </div>
-      </div>
-
-      <form class="qform rv-form" id="review-form" novalidate>
-        <p class="qform-h">Leave a review</p>
-        <fieldset class="rv-stars">
-          <legend>Your rating</legend>
-          <div class="rv-stars-row"><input type="radio" name="rating" id="rv-s5" value="5" required><label for="rv-s5" title="5 stars">&#9733;</label><input type="radio" name="rating" id="rv-s4" value="4"><label for="rv-s4" title="4 stars">&#9733;</label><input type="radio" name="rating" id="rv-s3" value="3"><label for="rv-s3" title="3 stars">&#9733;</label><input type="radio" name="rating" id="rv-s2" value="2"><label for="rv-s2" title="2 stars">&#9733;</label><input type="radio" name="rating" id="rv-s1" value="1"><label for="rv-s1" title="1 star">&#9733;</label></div>
-        </fieldset>
-        <div class="row">
-          <label class="fld"><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="e.g. Sarah K." required></label>
-          <label class="fld"><span>Neighborhood or city</span><input name="place" type="text" autocomplete="address-level2"></label>
-        </div>
-        <label class="fld"><span>Your review</span><textarea name="review" rows="4" placeholder="How did the lights turn out?" required></textarea></label>
-        <label class="file-fld">
-          <input name="attachment" type="file" accept="image/*" id="rv-photo">
-          <span class="file-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h3l2-2h6l2 2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm8 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></span>
-          <span class="file-text"><b id="rv-photo-name">Add a photo of your lights</b><small id="rv-photo-hint">Optional</small></span>
-          <img class="file-thumb" id="rv-photo-thumb" alt="" hidden>
-        </label>
-        <label class="rv-ok"><input type="checkbox" name="ok_to_publish" value="Yes" checked> It's OK to show my review (first name and city) on this website</label>
-        <button type="submit" class="pill-btn grad-btn block">Submit review</button>
-        <p class="form-note" id="review-note" role="status"></p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section class="section" id="faq">
-  <div class="wrap narrow">
-    <h2 class="h-center reveal">Questions</h2>
-    <div class="faq">
-      <details class="reveal"><summary>What are permanent lights?</summary><p>LED lights mounted along your roofline year-round, controlled from your phone.</p></details>
-      <details class="reveal"><summary>Can you see them during the day?</summary><p>Barely. They sit low along the trim with wiring hidden.</p></details>
-      <details class="reveal"><summary>Do you still do seasonal displays?</summary><p>Yes. We design, install, take down and store them for you.</p></details>
-      <details class="reveal"><summary>How much does it cost?</summary><p>It depends on your roofline. Quotes are always free.</p></details>
-    </div>
-  </div>
-</section>
-
 <!-- ================= Final CTA ================= -->
 <section class="section tight">
   <div class="wrap">
     <div class="final-cta reveal">
       <video class="cta-video" data-src="assets/video/house-fireworks.mp4" poster="assets/video/house-fireworks.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
       <h2>Ready to light it up?</h2>
-      <a href="#quote" class="pill-btn white">Book a free design visit</a>
+      <a href="contact.html" class="pill-btn white">Book a free design visit</a>
     </div>
   </div>
 </section>
@@ -537,7 +241,8 @@
         <a href="https://www.tiktok.com/" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16 3c.4 2.4 1.9 4 4.5 4.2v3.4a8 8 0 0 1-4.4-1.4v6.3A5.6 5.6 0 1 1 10.5 10v3.5a2.2 2.2 0 1 0 2.2 2.2V3z"/></svg></a>
       </div>
     </div>
-    <div><p class="ftr-h">Contact</p><a href="tel:+16122297148">612-229-7148</a><a href="mailto:macpaulmesseh@gmail.com?subject=Free%20lighting%20quote&amp;body=Hi%20Mac%27s%2C%0A%0AI%27d%20like%20a%20free%20quote%20for%20my%20home.%0A%0AName%3A%0AAddress%2FCity%3A%0APhone%3A%0A">macpaulmesseh@gmail.com</a><a href="#quote">Free Quote</a></div>
+    <div><p class="ftr-h">Pages</p><a href="index.html">Home</a><a href="work.html">Our Work</a><a href="services.html">Services</a><a href="app.html">The App</a><a href="reviews.html">Reviews</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
+    <div><p class="ftr-h">Contact</p><a href="tel:+16122297148">612-229-7148</a><a href="mailto:macpaulmesseh@gmail.com?subject=Free%20lighting%20quote&amp;body=Hi%20Mac%27s%2C%0A%0AI%27d%20like%20a%20free%20quote%20for%20my%20home.%0A%0AName%3A%0AAddress%2FCity%3A%0APhone%3A%0A">macpaulmesseh@gmail.com</a><a href="contact.html">Free Quote</a></div>
   </div>
   <div class="wrap ftr-bottom">
     <span>© <span id="year"></span> Mac's Premier Holiday Lighting. All rights reserved.</span>
@@ -553,7 +258,7 @@
     <h3 id="modal-title"></h3>
     <p id="modal-text"></p>
     <div class="modal-actions">
-      <a href="#quote" class="pill-btn grad-btn" id="modal-quote">Get a quote</a>
+      <a href="contact.html" class="pill-btn grad-btn" id="modal-quote">Get a quote</a>
       <a href="tel:+16122297148" class="pill-btn">Call</a>
       <a href="sms:+16122297148?&amp;body=Hi%20Mac%27s!%20I%27d%20like%20a%20free%20lighting%20quote." class="pill-btn">Text</a>
     </div>
@@ -561,7 +266,7 @@
 </dialog>
 
 <!-- Floating holiday countdown -->
-<a class="countdown" href="#designer" id="countdown">
+<a class="countdown" href="app.html#designer" id="countdown">
   <span class="cd-emoji" id="cd-emoji">🎃</span>
   <span class="cd-time" id="cd-time">--</span>
   <span class="cd-until">to <b id="cd-name">Halloween</b></span>
