@@ -23,7 +23,11 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
 
   /* ---------- Scroll reveal ---------- */
-  const revealEls = document.querySelectorAll('.reveal');
+  // Anything already on screen when a page opens shows at once; only content further down fades in.
+  const revealEls = [...document.querySelectorAll('.reveal')].filter((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('in', 'no-fade'); return false; }
+    return true;
+  });
   if ('IntersectionObserver' in window && !reduceMotion) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

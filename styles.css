@@ -560,3 +560,12 @@ h1, h2, h3, .h-center, .h-left, .tile-h, .modal-body h3 { font-family: var(--hea
 .menu-foot { width: min(560px, 100%); margin: 2rem auto 0; display: flex; flex-direction: column; gap: 12px; }
 .menu-phone { font-family: var(--head); font-weight: 600; text-decoration: none; text-align: center; padding: .9rem; border: 1.5px solid var(--ink); border-radius: 10px; }
 .menu-foot .menu-cta { margin-top: 0; width: 100%; background: var(--accent) !important; }
+
+/* sub-pages open straight into their content (no title band) */
+body.subpage main > .section:first-child { padding-top: 120px; }
+@media (max-width: 760px) { body.subpage main > .section:first-child { padding-top: 96px; } }
+.reveal.no-fade { transition: none; }
+
+/* header menu: never wrap; drop the phone number text before space runs out */
+.hdr-nav a, .hdr-phone, .hdr .pill-btn { white-space: nowrap; }
+@media (max-width: 1180px) { .hdr-phone { display: none; } .hdr-nav { gap: 1.1rem; margin-right: 1rem; } }
