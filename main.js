@@ -470,7 +470,7 @@
   // While it's empty, the form opens the visitor's own email app instead (photos can't attach that way).
   // With an address, requests (photo included) are delivered by FormSubmit (formsubmit.co).
   // The very first request sends a one-time "confirm your email" message to that inbox: click it once.
-  const FORM_EMAIL = '';
+  const FORM_EMAIL = 'macpaulmesseh@gmail.com';
 
   const form = document.getElementById('estimate-form');
   const note = document.getElementById('form-note');
