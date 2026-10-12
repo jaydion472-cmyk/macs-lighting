@@ -441,11 +441,12 @@
 
   /* ---------- Reviews ---------- */
   // Add real customer reviews here (copied from Google/Facebook with permission).
-  // The section stays hidden until this list has at least one entry.
+  // Until this list has an entry, the section shows a "be one of our first reviews" note.
+  // New reviews arrive by email from the form below; paste the ones you approve here.
   // Example: { name: 'Jane D.', place: 'Maple Grove', stars: 5, text: 'Our house has never looked better...' }
   const REVIEWS = [];
   const reviewSection = document.getElementById('reviews');
-  if (REVIEWS.length && reviewSection) {
+  if (REVIEWS.length && reviewSection) {   // newest first
     const list = document.getElementById('review-list');
     REVIEWS.forEach((r) => {
       const fig = document.createElement('figure');
@@ -462,7 +463,8 @@
       fig.append(stars, quote, cap);
       list.appendChild(fig);
     });
-    reviewSection.hidden = false;
+    const empty = document.getElementById('review-empty');
+    if (empty) empty.remove();
   }
 
   /* ---------- Quote form ---------- */
@@ -556,6 +558,48 @@
     }
   });
   form.addEventListener('input', (e) => { const f = e.target.closest('.fld'); if (f) f.classList.remove('invalid'); });
+
+  /* ---------- Leave a review ---------- */
+  const rForm = document.getElementById('review-form');
+  if (rForm) {
+    const rNote = document.getElementById('review-note');
+    const rPhoto = document.getElementById('rv-photo');
+    if (FORM_EMAIL) {
+      rForm.action = `https://formsubmit.co/${FORM_EMAIL}`;
+      rForm.method = 'POST';
+      rForm.enctype = 'multipart/form-data';
+      const hidden = { _subject: 'New review - macslight.com', _template: 'table', _next: `${location.origin}${location.pathname}?reviewed=1#reviews` };
+      Object.entries(hidden).forEach(([k, v]) => {
+        const i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; rForm.appendChild(i);
+      });
+    }
+    if (new URLSearchParams(location.search).get('reviewed')) {
+      rNote.textContent = 'Thank you! We got your review and really appreciate it.';
+    }
+    rPhoto.addEventListener('change', () => {
+      const f = rPhoto.files[0];
+      const thumb = document.getElementById('rv-photo-thumb');
+      const name = document.getElementById('rv-photo-name');
+      const hint = document.getElementById('rv-photo-hint');
+      if (f && f.size > MAX_PHOTO_MB * 1024 * 1024) { rPhoto.value = ''; hint.textContent = `That photo is over ${MAX_PHOTO_MB} MB. Please pick a smaller one.`; }
+      const ok = rPhoto.files[0];
+      thumb.hidden = !ok;
+      if (ok) { thumb.src = URL.createObjectURL(ok); name.textContent = ok.name; hint.textContent = 'Tap to change photo'; }
+      else { name.textContent = 'Add a photo of your lights'; if (!f) hint.textContent = 'Optional'; }
+    });
+    rForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const d = new FormData(rForm);
+      const missing = !d.get('rating') ? 'Please pick a star rating.'
+        : !String(d.get('name')).trim() ? 'Please add your name.'
+        : !String(d.get('review')).trim() ? 'Please write a few words about your lights.' : '';
+      if (missing) { rNote.textContent = missing; return; }
+      if (FORM_EMAIL) { rNote.textContent = 'Sending...'; rForm.submit(); return; }
+      const body = `Rating: ${d.get('rating')}/5\nName: ${d.get('name')}\nPlace: ${d.get('place') || '-'}\nOK to publish: ${d.get('ok_to_publish') ? 'Yes' : 'No'}\n\n${d.get('review')}`;
+      window.location.href = `mailto:maclights@gmail.com?subject=${encodeURIComponent('New review')}&body=${encodeURIComponent(body)}`;
+      rNote.textContent = 'Your email app should open with your review filled in. Just hit send!';
+    });
+  }
 
   document.getElementById('year').textContent = new Date().getFullYear();
 })();

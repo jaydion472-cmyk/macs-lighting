@@ -519,3 +519,23 @@ h1, h2, h3, .h-center, .h-left, .tile-h, .modal-body h3 { font-family: var(--hea
 /* what we light: 4-up grid, no sideways scrolling */
 .svc-grid .tile { flex: none; width: auto; }
 
+/* reviews: approved reviews on the left, leave-a-review form on the right */
+.rv-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 28px; align-items: start; margin-top: 2rem; }
+.rv-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.rv-list .review { flex: none; padding: 1.6rem; border-radius: 14px; }
+.rv-empty { grid-column: 1 / -1; padding: 2.2rem; border-radius: 14px; background: var(--soft); }
+.rv-empty .stars { color: #f5b400; font-size: 1.4rem; letter-spacing: .15em; }
+.rv-empty-h { font-family: var(--head); font-weight: 700; font-size: 1.4rem; margin: .6rem 0 .4rem; }
+.rv-empty p:last-child { color: var(--ink-2); margin: 0; max-width: 34em; }
+.rv-stars { border: 0; margin: 0 0 12px; padding: 0; }
+.rv-stars legend { font-size: .72rem; font-weight: 600; color: var(--ink-2); margin-bottom: .2rem; }
+.rv-stars-row { display: inline-flex; flex-direction: row-reverse; gap: 2px; }
+.rv-stars input { position: absolute; opacity: 0; pointer-events: none; }
+.rv-stars label { font-size: 2rem; line-height: 1; color: #d6d8de; cursor: pointer; transition: color .15s, transform .15s; }
+.rv-stars label:hover, .rv-stars label:hover ~ label, .rv-stars input:checked ~ label { color: #f5b400; }
+.rv-stars label:hover { transform: scale(1.1); }
+.rv-stars input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.rv-ok { display: flex; gap: .55rem; align-items: flex-start; font-size: .85rem; color: var(--ink-2); margin: 0 0 14px; }
+.rv-ok input { margin-top: .2rem; accent-color: var(--accent); }
+@media (max-width: 900px) { .rv-layout { grid-template-columns: 1fr; } }
+

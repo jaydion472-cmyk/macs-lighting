@@ -33,6 +33,7 @@
     <a href="#work">Our Work</a>
     <a href="#services">Services</a>
     <a href="#app">The App</a>
+    <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
     <a href="#quote">Contact</a>
   </nav>
@@ -66,7 +67,8 @@
     </div>
     <div class="menu-col">
       <p class="menu-h">Help</p>
-      <a href="#faq">FAQ</a>
+      <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
       <a href="#quote" data-pick="Service / repair">Service Request</a>
       <a href="tel:+16122297148">612-229-7148</a>
     </div>
@@ -457,18 +459,45 @@
   </div>
 </section>
 
-<!-- ================= Reviews (shows only when REVIEWS in main.js has entries) ================= -->
-<section class="section" id="reviews" hidden>
+<!-- ================= Reviews: real customer reviews + leave a review ================= -->
+<section class="section" id="reviews">
   <div class="wrap">
+    <p class="eyebrow accent">Reviews</p>
     <div class="row-head reveal">
-      <h2>What neighbors say</h2>
-      <div class="arrows">
-        <button class="arrow" data-scroll="review-list" data-dir="-1" aria-label="Previous">‹</button>
-        <button class="arrow" data-scroll="review-list" data-dir="1" aria-label="Next">›</button>
+      <h2>What our customers say</h2>
+    </div>
+    <div class="rv-layout">
+      <div class="rv-list" id="review-list">
+        <div class="rv-empty" id="review-empty">
+          <div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="rv-empty-h">Be one of our first reviews</p>
+          <p>Had your home lit by Mac's? We'd love to hear how it went. Your review helps your neighbors find a crew they can trust.</p>
+        </div>
       </div>
+
+      <form class="qform rv-form" id="review-form" novalidate>
+        <p class="qform-h">Leave a review</p>
+        <fieldset class="rv-stars">
+          <legend>Your rating</legend>
+          <div class="rv-stars-row"><input type="radio" name="rating" id="rv-s5" value="5" required><label for="rv-s5" title="5 stars">&#9733;</label><input type="radio" name="rating" id="rv-s4" value="4"><label for="rv-s4" title="4 stars">&#9733;</label><input type="radio" name="rating" id="rv-s3" value="3"><label for="rv-s3" title="3 stars">&#9733;</label><input type="radio" name="rating" id="rv-s2" value="2"><label for="rv-s2" title="2 stars">&#9733;</label><input type="radio" name="rating" id="rv-s1" value="1"><label for="rv-s1" title="1 star">&#9733;</label></div>
+        </fieldset>
+        <div class="row">
+          <label class="fld"><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="e.g. Sarah K." required></label>
+          <label class="fld"><span>Neighborhood or city</span><input name="place" type="text" autocomplete="address-level2"></label>
+        </div>
+        <label class="fld"><span>Your review</span><textarea name="review" rows="4" placeholder="How did the lights turn out?" required></textarea></label>
+        <label class="file-fld">
+          <input name="attachment" type="file" accept="image/*" id="rv-photo">
+          <span class="file-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h3l2-2h6l2 2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm8 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></span>
+          <span class="file-text"><b id="rv-photo-name">Add a photo of your lights</b><small id="rv-photo-hint">Optional</small></span>
+          <img class="file-thumb" id="rv-photo-thumb" alt="" hidden>
+        </label>
+        <label class="rv-ok"><input type="checkbox" name="ok_to_publish" value="Yes" checked> It's OK to show my review (first name and city) on this website</label>
+        <button type="submit" class="pill-btn grad-btn block">Submit review</button>
+        <p class="form-note" id="review-note" role="status"></p>
+      </form>
     </div>
   </div>
-  <div class="rail" id="review-list"></div>
 </section>
 
 <!-- ================= FAQ ================= -->
