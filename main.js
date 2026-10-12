@@ -553,7 +553,7 @@
       note.textContent = 'Your messages app should open with everything filled in. Just hit send!' + photoTip;
     } else {
       const subject = `Free quote request - ${name}`;
-      window.location.href = `mailto:maclights@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      window.location.href = `mailto:macpaulmesseh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
       note.textContent = 'Your email app should open with everything filled in. Just hit send!' + photoTip;
     }
   });
@@ -596,7 +596,7 @@
       if (missing) { rNote.textContent = missing; return; }
       if (FORM_EMAIL) { rNote.textContent = 'Sending...'; rForm.submit(); return; }
       const body = `Rating: ${d.get('rating')}/5\nName: ${d.get('name')}\nPlace: ${d.get('place') || '-'}\nOK to publish: ${d.get('ok_to_publish') ? 'Yes' : 'No'}\n\n${d.get('review')}`;
-      window.location.href = `mailto:maclights@gmail.com?subject=${encodeURIComponent('New review')}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:macpaulmesseh@gmail.com?subject=${encodeURIComponent('New review')}&body=${encodeURIComponent(body)}`;
       rNote.textContent = 'Your email app should open with your review filled in. Just hit send!';
     });
   }
