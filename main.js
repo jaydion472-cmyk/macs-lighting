@@ -247,7 +247,7 @@
   const hsAll = [...document.querySelectorAll('.hs')];
   const hdotsBox = document.querySelector('.hero-dots');
   if (hsAll.length) {
-    const PHOTO_MS = 6500;
+    const PHOTO_MS = 3000;
     const phoneMq = window.matchMedia('(max-width: 860px)');
     let slides = [];
     let cur = 0;

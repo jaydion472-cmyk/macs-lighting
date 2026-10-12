@@ -106,7 +106,7 @@ body.menu-open .hdr { background: rgba(255,255,255,.9); color: var(--ink); borde
 /* ---------- Hero: our photos full screen (phones also play our videos) ---------- */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: end; overflow: hidden; color: #fff; background: var(--night); padding: 120px 0 150px; }
 .hero-slides { position: absolute; inset: 0; z-index: 0; }
-.hs { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.4s ease; }
+.hs { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .9s ease; }
 .hs.is-active { opacity: 1; }
 .hs picture, .hs img, .hs video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .hs img { object-position: 50% 50%; transform: scale(1.08); transition: transform 9s ease-out; }
