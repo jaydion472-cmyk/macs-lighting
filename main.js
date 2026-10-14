@@ -504,7 +504,7 @@
     form.action = `https://formsubmit.co/${FORM_EMAIL}`;
     form.method = 'POST';
     form.enctype = 'multipart/form-data';
-    const hidden = { _subject: 'New free quote request - macslight.com', _template: 'table', _next: `${location.origin}${location.pathname}?sent=1#quote` };
+    const hidden = { _subject: 'New free quote request - macspremierlighting.com', _template: 'table', _next: `${location.origin}${location.pathname}?sent=1#quote` };
     Object.entries(hidden).forEach(([k, v]) => {
       const i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; form.appendChild(i);
     });
@@ -586,7 +586,7 @@
       rForm.action = `https://formsubmit.co/${FORM_EMAIL}`;
       rForm.method = 'POST';
       rForm.enctype = 'multipart/form-data';
-      const hidden = { _subject: 'New review - macslight.com', _template: 'table', _next: `${location.origin}${location.pathname}?reviewed=1#reviews` };
+      const hidden = { _subject: 'New review - macspremierlighting.com', _template: 'table', _next: `${location.origin}${location.pathname}?reviewed=1#reviews` };
       Object.entries(hidden).forEach(([k, v]) => {
         const i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; rForm.appendChild(i);
       });
