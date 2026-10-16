@@ -453,7 +453,7 @@
   // With a URL, submitted reviews show on the site right away (if the customer ticked
   // "OK to show"); Mac hides one by unticking its "Show" box in the sheet.
   // While it's empty, reviews are emailed via FormSubmit and must be pasted into REVIEWS by hand.
-  const REVIEWS_API = '';
+  const REVIEWS_API = 'https://script.google.com/macros/s/AKfycbxkoJxQUB9ftlfBZeJgXWHCE0XUSdbC1TKWwpHMayPrEOkl_tX_qPhBXN2UPx5prERLuw/exec';
   // Extra reviews to always show (e.g. copied from Google/Facebook with permission).
   // Example: { name: 'Jane D.', place: 'Maple Grove', stars: 5, text: 'Our house has never looked better...' }
   const REVIEWS = [];

@@ -10,12 +10,17 @@
  */
 
 const NOTIFY_EMAIL = 'macpaulmesseh@gmail.com';   // gets an email for every new review
+const SHEET_ID = '19qFOpIvklC9HOtj0ATYPvCBdraq68cfrXWR-sf1pOEs';   // the "Mac's Reviews" sheet ('' = the sheet this script is attached to)
 const SHEET_NAME = 'Reviews';
 const HEADERS = ['Date', 'Stars', 'Name', 'Place', 'Review', 'OK to publish', 'Show', 'Photo emailed'];
 const MAX_PER_HOUR = 30;   // simple spam brake for the whole site
 
+function ss_() {
+  return SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
+}
+
 function sheet_() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = ss_();
   let sh = ss.getSheetByName(SHEET_NAME);
   if (!sh) {
     sh = ss.insertSheet(SHEET_NAME);
@@ -97,7 +102,7 @@ function doPost(e) {
       '',
       okToPublish ? 'This review is now showing on macspremierlighting.com/reviews.html.' : 'The customer did NOT give permission to publish, so it is hidden.',
       'To hide or show it, untick/tick its "Show" box in the Reviews sheet:',
-      SpreadsheetApp.getActiveSpreadsheet().getUrl(),
+      ss_().getUrl(),
       photo ? '\nTheir photo is attached (not published). Check it for house numbers before using it anywhere.' : '',
     ].join('\n');
     MailApp.sendEmail({

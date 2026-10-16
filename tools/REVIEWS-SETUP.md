@@ -1,5 +1,8 @@
 # Reviews: one-time setup (about 5 minutes)
 
+**Status (2026-10-15): done.** Sheet "Mac's Reviews" + Apps Script project "Mac's Reviews" live under jaydion472@gmail.com;
+the script is standalone and points at the sheet via SHEET_ID. The steps below are for redoing it from scratch.
+
 Reviews from reviews.html are saved to a Google Sheet and show on the site right away
 (when the customer ticks "OK to show my review"). Mac gets an email for each one.
 
