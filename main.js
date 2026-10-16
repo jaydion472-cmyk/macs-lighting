@@ -449,31 +449,41 @@
   }
 
   /* ---------- Reviews ---------- */
-  // Add real customer reviews here (copied from Google/Facebook with permission).
-  // Until this list has an entry, the section shows a "be one of our first reviews" note.
-  // New reviews arrive by email from the form below; paste the ones you approve here.
+  // Reviews live in a Google Sheet (see tools/REVIEWS-SETUP.md). Paste its web-app URL here.
+  // With a URL, submitted reviews show on the site right away (if the customer ticked
+  // "OK to show"); Mac hides one by unticking its "Show" box in the sheet.
+  // While it's empty, reviews are emailed via FormSubmit and must be pasted into REVIEWS by hand.
+  const REVIEWS_API = '';
+  // Extra reviews to always show (e.g. copied from Google/Facebook with permission).
   // Example: { name: 'Jane D.', place: 'Maple Grove', stars: 5, text: 'Our house has never looked better...' }
   const REVIEWS = [];
-  const reviewSection = document.getElementById('reviews');
-  if (REVIEWS.length && reviewSection) {   // newest first
-    const list = document.getElementById('review-list');
-    REVIEWS.forEach((r) => {
-      const fig = document.createElement('figure');
-      fig.className = 'review';
-      const stars = document.createElement('div');
-      stars.className = 'stars';
-      stars.setAttribute('aria-label', `${r.stars} out of 5 stars`);
-      stars.textContent = '★'.repeat(r.stars);
-      const quote = document.createElement('blockquote');
-      quote.textContent = `“${r.text}”`;
-      const cap = document.createElement('figcaption');
-      cap.textContent = r.name;
-      if (r.place) { const s = document.createElement('span'); s.textContent = r.place; cap.appendChild(s); }
-      fig.append(stars, quote, cap);
-      list.appendChild(fig);
-    });
+  const reviewList = document.getElementById('review-list');
+  const addReview = (r, atTop) => {
+    const fig = document.createElement('figure');
+    fig.className = 'review';
+    const n = Math.min(5, Math.max(1, Number(r.stars) || 5));
+    const stars = document.createElement('div');
+    stars.className = 'stars';
+    stars.setAttribute('aria-label', `${n} out of 5 stars`);
+    stars.textContent = '★'.repeat(n);
+    const quote = document.createElement('blockquote');
+    quote.textContent = `“${r.text}”`;
+    const cap = document.createElement('figcaption');
+    cap.textContent = r.name;
+    if (r.place) { const s = document.createElement('span'); s.textContent = r.place; cap.appendChild(s); }
+    fig.append(stars, quote, cap);
+    if (atTop) reviewList.prepend(fig); else reviewList.appendChild(fig);
     const empty = document.getElementById('review-empty');
     if (empty) empty.remove();
+  };
+  if (reviewList) {
+    REVIEWS.forEach((r) => addReview(r));
+    if (REVIEWS_API) {
+      fetch(REVIEWS_API)
+        .then((res) => res.json())
+        .then((data) => (data.reviews || []).forEach((r) => addReview(r)))
+        .catch(() => {});
+    }
   }
 
   /* ---------- Quote form ---------- */
@@ -582,7 +592,7 @@
   if (rForm) {
     const rNote = document.getElementById('review-note');
     const rPhoto = document.getElementById('rv-photo');
-    if (FORM_EMAIL) {
+    if (FORM_EMAIL && !REVIEWS_API) {
       rForm.action = `https://formsubmit.co/${FORM_EMAIL}`;
       rForm.method = 'POST';
       rForm.enctype = 'multipart/form-data';
@@ -605,6 +615,42 @@
       if (ok) { thumb.src = URL.createObjectURL(ok); name.textContent = ok.name; hint.textContent = 'Tap to change photo'; }
       else { name.textContent = 'Add a photo of your lights'; if (!f) hint.textContent = 'Optional'; }
     });
+    // shrink the photo in the browser so it uploads fast (it's emailed to Mac, never published)
+    const shrinkPhoto = (file) => new Promise((resolve) => {
+      if (!file) return resolve(null);
+      const img = new Image();
+      img.onload = () => {
+        const scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+        const c = document.createElement('canvas');
+        c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        resolve(c.toDataURL('image/jpeg', 0.85).split(',')[1]);
+      };
+      img.onerror = () => resolve(null);
+      img.src = URL.createObjectURL(file);
+    });
+    const submitBtn = rForm.querySelector('button[type=submit]');
+    const postReview = async (d) => {
+      rNote.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      const body = new URLSearchParams();
+      ['rating', 'name', 'place', 'review', 'ok_to_publish', 'website'].forEach((k) => body.append(k, d.get(k) || ''));
+      const photo = await shrinkPhoto(rPhoto.files[0]);
+      if (photo) { body.append('photo', photo); body.append('photo_type', 'image/jpeg'); body.append('photo_name', 'review-photo.jpg'); }
+      try {
+        // Apps Script doesn't send CORS headers on POST, so the reply can't be read; a network error still throws
+        await fetch(REVIEWS_API, { method: 'POST', mode: 'no-cors', body });
+        const shown = d.get('ok_to_publish') === 'Yes';
+        if (shown) addReview({ stars: d.get('rating'), name: String(d.get('name')).trim(), place: String(d.get('place') || '').trim(), text: String(d.get('review')).trim() }, true);
+        rForm.reset();
+        rPhoto.dispatchEvent(new Event('change'));
+        rNote.textContent = shown ? 'Thank you! Your review is now on our site.' : 'Thank you! We got your review and really appreciate it.';
+        if (shown) reviewList.firstElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        rNote.textContent = 'Sorry, that didn\'t send. Please check your connection and try again.';
+      }
+      submitBtn.disabled = false;
+    };
     rForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const d = new FormData(rForm);
@@ -612,6 +658,7 @@
         : !String(d.get('name')).trim() ? 'Please add your name.'
         : !String(d.get('review')).trim() ? 'Please write a few words about your lights.' : '';
       if (missing) { rNote.textContent = missing; return; }
+      if (REVIEWS_API) { postReview(d); return; }
       if (FORM_EMAIL) { rNote.textContent = 'Sending...'; rForm.submit(); return; }
       const body = `Rating: ${d.get('rating')}/5\nName: ${d.get('name')}\nPlace: ${d.get('place') || '-'}\nOK to publish: ${d.get('ok_to_publish') ? 'Yes' : 'No'}\n\n${d.get('review')}`;
       window.location.href = `mailto:macpaulmesseh@gmail.com?subject=${encodeURIComponent('New review')}&body=${encodeURIComponent(body)}`;
